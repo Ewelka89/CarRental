@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="pl"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head th:include="navi :: head">
+<body class= "background__form no-repeat cover">
+<div th:include="navi :: menu"></div>
+<h2 class="movieDet">Add new car:</h2>
+<datalist id="gearbox">
+<select>
+    <option th:each="st : ${T(pl.ek.domain.Gearbox).values()}"
+            th:value="${st}" th:text="${st}">
+    </option>
+</select><br>
+</datalist>
+    <datalist id="bodyType">
+<select>
+    <option th:each="st : ${T(pl.ek.domain.Body).values()}"
+            th:value="${st}" th:text="${st}">
+    </option>
+</select> <br>
+    </datalist>
+        <datalist id="fuelType">
+<select>
+    <option th:each="st : ${T(pl.ek.domain.Fuel).values()}"
+            th:value="${st}" th:text="${st}">
+    </option>
+</select>
+        </datalist>
+<form th:action="@{/car/add}" th:object="${car}" method="post">
+    <div class="col-xs-3">
+        <div class="thumbnail">
+            <label>Brand:</label>
+            <input type="text" class="form-control" th:field="*{brand}">
+            <td th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"></td>
+
+        </div>
+        <div class="thumbnail">
+            <label>Car model:</label>
+            <input type="text" class="form-control" th:field="*{model}">
+            <td th:if="${#fields.hasErrors('model')}" th:errors="*{model}"></td>
+
+        </div>
+        <div class="thumbnail">
+            <label>Car year:</label>
+            <input type="text" class="form-control" placeholder="YYYY" pattern="[0-9]{4}" th:field="*{year}">
+            <td th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></td>
+
+        </div>
+        <div class="thumbnail">
+            <label>Air condition:</label>
+            <input type="checkbox" th:field="*{airCondition}">
+            <td th:if="${#fields.hasErrors('airCondition')}" th:errors="*{airCondition}"></td>
+        </div>
+        <div class="thumbnail">
+            <label>Navigation:</label>
+            <input type="checkbox" th:field="*{navi}">
+            <td th:if="${#fields.hasErrors('navi')}" th:errors="*{navi}"></td>
+        </div>
+        <div class="thumbnail">
+            <label>Bluetooth:</label>
+            <input type="checkbox" th:field="*{bluetooth}">
+            <td th:if="${#fields.hasErrors('bluetooth')}" th:errors="*{bluetooth}"></td>
+        </div>
+        <div class="thumbnail">
+            <label>Car audio:</label>
+            <input type="checkbox" th:field="*{carAudio}">
+            <td th:if="${#fields.hasErrors('carAudio')}" th:errors="*{carAudio}"></td>
+        </div>
+        <div class="thumbnail">
+            <label>Four wheel drive:</label>
+            <input type="checkbox" th:field="*{fourWheelDrive}">
+            <td th:if="${#fields.hasErrors('fourWheelDrive')}" th:errors="*{fourWheelDrive}"></td>
+        </div>
+        <div class="thumbnail">
+            <label for="gearbox">Gearbox:</label>
+            <input list="gearbox" class="form-control" placeholder="choose a gearbox" th:field="*{gearbox}">
+            <td th:if="${#fields.hasErrors('gearbox')}" th:errors="*{gearbox}"></td>
+
+        </div>
+        <div class="thumbnail">
+            <label for="bodyType">Body type:</label>
+            <input list="bodyType" class="form-control" placeholder="choose a body type" th:field="*{bodyType}">
+            <td th:if="${#fields.hasErrors('bodyType')}" th:errors="*{bodyType}"></td>
+
+        </div>
+        <div class="thumbnail">
+            <label for="fuelType">Fuel type:</label>
+            <input list="fuelType" class="form-control" placeholder="choose a fuel type" th:field="*{fuelType}">
+            <td th:if="${#fields.hasErrors('fuelType')}" th:errors="*{fuelType}"></td>
+
+        </div>
+
+        <button type="submit" class="btn btn-success">Save</button>
+
+        <button type="reset" class="btn btn-warning">Reset</button>
+
+    </div>
+
+</form>
+</body>
+</html>

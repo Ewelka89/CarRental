@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="pl"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head th:include="navi :: head">
+<body>
+<div th:include="navi :: menu"></div>
+<div>
+    <section>
+        <h3 th:text="|Clients list|"></h3>
+        <table class="table">
+            <tr>
+                <th scope="col">Lp</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Name</th>
+                <th scope="col">Birthdate</th>
+                <th scope="col">City</th>
+                <th scope="col">Client type</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+
+            <tbody class="tbody-light">
+            <tr th:each="cl : ${clients}">
+                <td th:text="${cl.id}"></td>
+                <td th:text="${cl.surname}"></td>
+                <td th:text="${cl.name}"></td>
+                <td th:text="${cl.birthdate}"></td>
+                <td th:text="${cl.clientAddress.city}"></td>
+                <td th:text="${cl.clientType}"></td>
+                <td>
+                    <a th:href="@{/client/details?id={id}(id=${cl.id})}"
+                       role="button" class="btn btn-warning">
+                        <i>Details</i>
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{/client/rentals?id={id}(id=${cl.id})}"
+                       role="button" class="btn btn-primary">
+                        <i>Rentals</i>
+                    </a>
+                </td>
+                <td>
+                <a th:href="@{/client/delete?id={id}(id=${cl.id})}"
+                role="button" class="btn btn-danger">
+                    <i>Delete</i>
+                </a>
+                </td>
+
+            </tr></tbody>
+        </table>
+    </section>
+</div>
+</body>
+</html>

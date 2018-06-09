@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="pl"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head th:include="navi :: head">
+<body>
+<div th:include="navi :: menu"></div>
+<div>
+    <section>
+        <h3 th:text="|Rentals list|"></h3>
+        <table class="table">
+            <tr>
+                <th scope="col">Lp</th>
+                <th scope="col">Client surname</th>
+                <th scope="col">Client name</th>
+                <th scope="col">Id car</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Model</th>
+                <th scope="col">Pick up location</th>
+                <th scope="col">Drop off location</th>
+                <th scope="col">Pick up date</th>
+                <th scope="col">Drop off date</th>
+            </tr>
+            </thead>
+
+            <tbody class="tbody-light">
+            <tr th:each="rent : ${rents}">
+                <td th:text="${rent.id}"></td>
+                <td th:text="${rent.client.surname}"></td>
+                <td th:text="${rent.client.name}"></td>
+                <td th:text="${rent.car.id}"></td>
+                <td th:text="${rent.car.brand}"></td>
+                <td th:text="${rent.car.model}"></td>
+                <td th:text="${rent.pickUpLocation}"></td>
+                <td th:text="${rent.dropOffLocation}"></td>
+                <td th:text="${rent.pickUpDate}"></td>
+                <td th:text="${rent.dropOffDate}"></td>
+            </tr>
+       </tbody>
+            <p></p>
+            <br>
+        </table>
+    </section>
+</div>
+</body>
+</html>

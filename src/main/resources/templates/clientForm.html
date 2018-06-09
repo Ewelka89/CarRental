@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="pl"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head th:include="navi :: head">
+<body class= "background__form_client no-repeat cover">
+<div th:include="navi :: menu"></div>
+<h2>Add new client:</h2>
+<datalist id="clientType">
+    <select>
+        <option th:each="st : ${T(pl.ek.domain.ClientType).values()}"
+                th:value="${st}" th:text="${st}">
+        </option>
+    </select>
+</datalist>
+<form th:action="@{/client/add}" th:object="${client}" method="post">
+    <div class="col-xs-3">
+        <div class="thumbnail">
+            <label>Name:</label>
+            <input type="text" class="form-control" th:field="*{name}">
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+        </div>
+        <div class="thumbnail">
+            <label>Surname:</label>
+            <input type="text" class="form-control" th:field="*{surname}">
+            <td th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></td>
+        </div>
+        <div class="thumbnail">
+            <label>Date of birth:</label>
+            <input type="text" class="form-control" placeholder="input birthdate in format dd.mm.yyyy"
+                   pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" th:field="*{birthdate}">
+            <td th:if="${#fields.hasErrors('birthdate')}" th:errors="*{birthdate}"></td>
+        </div>
+        <div class="thumbnail">
+            <label for="clientType">Client Type:</label>
+            <input list="clientType" class="form-control" placeholder="choose a client type" th:field="*{clientType}">
+            <td th:if="${#fields.hasErrors('clientType')}" th:errors="*{clientType}"></td>
+        </div>
+        <div class="thumbnail">
+            <label>E-mail:</label>
+            <input type="text" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" th:field="*{clientContact.mail}">
+            <td th:if="${#fields.hasErrors('clientContact.mail')}" th:errors="*{clientContact.mail}"></td>
+        </div>
+        <div class="thumbnail">
+            <label>Phone number:</label>
+            <input type="text" class="form-control" pattern="[0-9]{9}" th:field="*{clientContact.phoneNumber}">
+            <td th:if="${#fields.hasErrors('clientContact.phoneNumber')}" th:errors="*{clientContact.phoneNumber}"></td>
+        </div>
+        <div class="thumbnail">
+            <label>Street:</label>
+            <input type="text" class="form-control" th:field="*{clientAddress.street}">
+            <td th:if="${#fields.hasErrors('clientAddress.street')}" th:errors="*{clientAddress.street}"></td>
+        </div>
+        <div class="thumbnail">
+            <label>House:</label>
+            <input type="text" class="form-control" th:field="*{clientAddress.house}">
+            <td th:if="${#fields.hasErrors('clientAddress.house')}" th:errors="*{clientAddress.house}"></td>
+        </div>
+        <div class="thumbnail">
+            <label>Flat:</label>
+            <input type="text" class="form-control" th:field="*{clientAddress.flat}">
+            <td th:if="${#fields.hasErrors('clientAddress.flat')}" th:errors="*{clientAddress.flat}"></td>
+        </div>
+        <div class="thumbnail">
+            <label>Postcode:</label>
+            <input type="text" class="form-control" pattern="[0-9]*\-" th:field="*{clientAddress.postcode}">
+            <td th:if="${#fields.hasErrors('clientAddress.postcode')}" th:errors="*{clientAddress.postcode}"></td>
+        </div>
+        <div class="thumbnail">
+            <label>City:</label>
+            <input type="text" class="form-control" th:field="*{clientAddress.city}">
+            <td th:if="${#fields.hasErrors('clientAddress.city')}" th:errors="*{clientAddress.city}"></td>
+        </div>
+
+        <button type="submit" class="btn btn-success">Save</button>
+
+        <button type="reset" class="btn btn-warning">Reset</button>
+
+    </div>
+
+</form>
+</body>
+</html>

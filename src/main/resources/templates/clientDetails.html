@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="pl"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head th:include="navi :: head">
+<body>
+<div th:include="navi :: menu"></div>
+<div>
+    <section>
+        <h3 th:text="|Client details|"></h3>
+        <table class="table">
+            <tr>
+                <th scope="col">Surname</th>
+                <th scope="col">Name</th>
+                <th scope="col">Virthdate</th>
+                <th scope="col">Client type</th>
+                <th scope="col">Street</th>
+                <th scope="col">House</th>
+                <th scope="col">Flat</th>
+                <th scope="col">Postcode</th>
+                <th scope="col">City</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Phone number</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+
+            <tbody class="tbody-light">
+                <td th:text="${client.surname}"></td>
+                <td th:text="${client.name}"></td>
+                <td th:text="${client.birthdate}"></td>
+                <td th:text="${client.clientType}"></td>
+                <td th:text="${client.clientAddress.street}"></td>
+                <td th:text="${client.clientAddress.house}"></td>
+                <td th:text="${client.clientAddress.flat}"></td>
+                <td th:text="${client.clientAddress.postcode}"></td>
+                <td th:text="${client.clientAddress.city}"></td>
+                <td th:text="${client.clientContact.mail}"></td>
+                <td th:text="${client.clientContact.phoneNumber}"></td>
+                <td>
+                    <a th:href="@{/client/update?id={id}(id=${client.id})}"
+                       role="button" class="btn btn-danger">
+                        <i>Edit</i>
+                    </a>
+                </td>
+
+            </tbody>
+        </table>
+    </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="pl"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head th:include="navi :: head">
+<body>
+<div th:include="navi :: menu"></div>
+<h2>New rent:</h2>
+<datalist id="cars">
+    <option th:each="car : ${cars}" th:value="${car.id}"
+            th:label="${car.model}"></option>
+</datalist>
+<datalist id="clients">
+    <option th:each="cl : ${clients}" th:value="${cl.id}"
+            th:label="${cl.surname}"></option>
+</datalist>
+<datalist id="paymentMethod">
+    <select>
+        <option th:each="st : ${T(pl.ek.domain.Payment).values()}"
+                th:value="${st}" th:text="${st}">
+        </option>
+    </select>
+</datalist>
+<form th:action="@{/rental/add}" th:object="${rental}" method="post">
+    <div class="col-xs-3">
+
+        <div class="thumbnail">
+            <label for="cars">Car:</label>
+            <input list="cars" class="form-control" name="car" placeholder="choose a car" th:field="*{car}" >
+        </div>
+
+        <div class="thumbnail">
+            <label for="clients">Client:</label>
+            <input list="clients" class="form-control" name="client" placeholder="choose a client">
+        </div>
+
+        <div class="thumbnail">
+            <label>Pick Up Location:</label>
+            <input type="text" class="form-control" th:field="*{pickUpLocation}">
+            <td th:if="${#fields.hasErrors('pickUpLocation')}" th:errors="*{pickUpLocation}"></td>
+
+        </div>
+        <div class="thumbnail">
+            <label>Drop Off Location:</label>
+            <input type="text" class="form-control" th:field="*{dropOffLocation}">
+            <td th:if="${#fields.hasErrors('dropOffLocation')}" th:errors="*{dropOffLocation}"></td>
+
+        </div>
+        <div class="thumbnail">
+            <label>Pick Up Date:</label>
+            <input type="text" class="form-control" placeholder="input date in format dd.mm.yyyy"
+                   pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" th:field="*{pickUpDate}">
+            <td th:if="${#fields.hasErrors('pickUpDate')}" th:errors="*{pickUpDate}"></td>
+
+        </div>
+        <div class="thumbnail">
+            <label>Drop Off Date:</label>
+            <input type="text" class="form-control" placeholder="input date in format dd.mm.yyyy"
+                   pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" th:field="*{dropOffDate}">
+            <td th:if="${#fields.hasErrors('dropOffDate')}" th:errors="*{dropOffDate}"></td>
+
+        </div>
+        <div class="thumbnail">
+            <label for="paymentMethod">Payment Method:</label>
+            <input list="paymentMethod" class="form-control" placeholder="choose a payment method"  th:field="*{paymentMethod}">
+            <td th:if="${#fields.hasErrors('paymentMethod')}" th:errors="*{paymentMethod}"></td>
+        </div>
+
+        <button type="submit" class="btn btn-success">Rent</button>
+
+        <button type="reset" class="btn btn-warning">Reset</button>
+
+    </div>
+
+</form>
+</body>
+</html>

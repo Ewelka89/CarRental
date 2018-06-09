@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="pl"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head th:include="navi :: head">
+<body class="background__find no-repeat cover">
+<div th:include="navi :: menu"></div>
+<h2 class="movieDet">Find car:</h2>
+
+<form th:action="@{/car/findByBrand}" th:object="${car}" method="post">
+    <div class="col-xs-3">
+        <div class="thumbnail">
+            <label>Search car by brand:</label>
+            <input class="form-control" type="text" placeholder="Search.." name="brand" th:field="*{brand}"/>
+            <td th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"></td>
+        </div>
+
+        <button type="submit" class="btn btn-success">Search</button>
+
+    </div>
+
+</form>
+
+</body>
+</html>

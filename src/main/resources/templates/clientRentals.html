@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="pl"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head th:include="navi :: head">
+<body>
+<div th:include="navi :: menu"></div>
+<div>
+    <section>
+        <h3 th:text="|Client rentals|"></h3>
+        <table class="table">
+            <tr>
+                <!--<th scope="col">id</th>-->
+                <th scope="col">Pick up location</th>
+                <th scope="col">Drop dff location</th>
+                <th scope="col">Pick up date</th>
+                <th scope="col">Drop off date</th>
+                <th scope="col">Payment method</th>
+                <!--<th scope="col">arId</th>-->
+                <th scope="col">Brand</th>
+                <th scope="col">Model</th>
+            </tr>
+            </thead>
+
+            <tbody class="tbody-light">
+            <tr th:each="cl : ${client.rentals}">
+                <!--<td th:text="${cl.id}"></td>-->
+                <td th:text="${cl.pickUpLocation}"></td>
+                <td th:text="${cl.dropOffLocation}"></td>
+                <td th:text="${cl.pickUpDate}"></td>
+                <td th:text="${cl.dropOffDate}"></td>
+                <td th:text="${cl.paymentMethod}"></td>
+                <!--<td th:text="${cl.car.id}"></td>-->
+                <td th:text="${cl.car.brand}"></td>
+                <td th:text="${cl.car.model}"></td>
+
+            </tr></tbody>
+        </table>
+    </section>
+</div>
+</body>
+</html>

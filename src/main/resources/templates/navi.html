@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pl"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Rental</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container" th:fragment="menu">
+    <nav class="navbar navbar-inverse">
+        <div class="container-light" style="background-color: #e3f2fd;">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/rental/start">RENTAL</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">CAR<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/car/showAll">Show cars</a></li>
+                        <li><a href="/car/showFinder">Find car</a></li>
+                        <li> <a href="/car/add">Add car</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">CLIENT<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/client/showAll">Show clients</a></li>
+                        <li><a href="/client/showFinder">Find client</a></li>
+                        <li> <a href="/client/add">Add client</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">RENTALS<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/rental/showAll">Show rentals</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+        <!--<form class="navbar-form navbar-right" method="GET" th:action="@{/logout}">-->
+            <!--Logged in as: <b th:inline="text"> [[${#httpServletRequest.remoteUser}]] </b>-->
+            <!--<button type="submit" name="submit" value="value" class="btn link-button btn-sm btn-info">-->
+                <!--<span class="glyphicon glyphicon-log-out"></span> Log out-->
+            <!--</button>-->
+        <!--</form>-->
+    </nav>
+    <!--</div>-->
+</div>
+<!--<div th:fragment="flash" th:if="${flash != null}" class="container">-->
+    <!--<div class="message">-->
+        <!--<h2><div th:classappend="${#strings.toLowerCase(flash.status)}" th:text="${flash.message}" class="flash"></div></h2>-->
+    <!--</div>-->
+<!--</div>-->
+</body>
+</html>

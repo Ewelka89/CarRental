@@ -25,6 +25,7 @@ public class RentalServiceImplTest {
 
     @Test
     public void save() {
+        assertEquals(dataToTestRepository.rentalList().get(0), rentalService.save(dataToTestRepository.rentalList().get(0)));
     }
 
     @Test

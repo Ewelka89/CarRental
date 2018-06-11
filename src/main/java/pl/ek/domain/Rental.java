@@ -2,6 +2,7 @@ package pl.ek.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.Objects;
 
 @Entity
 public class Rental {
@@ -160,4 +161,24 @@ public class Rental {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rental rental = (Rental) o;
+        return Objects.equals(id, rental.id) &&
+                Objects.equals(car, rental.car) &&
+                Objects.equals(client, rental.client) &&
+                Objects.equals(pickUpLocation, rental.pickUpLocation) &&
+                Objects.equals(dropOffLocation, rental.dropOffLocation) &&
+                Objects.equals(pickUpDate, rental.pickUpDate) &&
+                Objects.equals(dropOffDate, rental.dropOffDate) &&
+                paymentMethod == rental.paymentMethod;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, car, client, pickUpLocation, dropOffLocation, pickUpDate, dropOffDate, paymentMethod);
+    }
 }

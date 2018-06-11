@@ -23,15 +23,15 @@ public class RentalController {
     @Autowired
     private ClientService clientService;
 
+    @RequestMapping("/start")
+    public String start() {
+        return "start";
+    }
+
     @GetMapping("/showAll")
     public String findAll(Model model) {
         model.addAttribute("rents", rentalService.findAll());
         return "rentalHome";
-    }
-
-    @RequestMapping("/start")
-    public String start() {
-        return "start";
     }
 
     @GetMapping("/add")

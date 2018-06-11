@@ -17,7 +17,7 @@
 <datalist id="paymentMethod">
     <select>
         <option th:each="st : ${T(pl.ek.domain.Payment).values()}"
-                th:value="${st}" th:text="${st}">
+                th:value="${st}" th:text="${st.name}">
         </option>
     </select>
 </datalist>
@@ -26,7 +26,7 @@
 
         <div class="thumbnail">
             <label for="cars">Car:</label>
-            <input list="cars" class="form-control" name="car" placeholder="choose a car" th:field="*{car}" >
+            <input list="cars" class="form-control" name="car" th:field="*{car}" >
         </div>
 
         <div class="thumbnail">
@@ -48,14 +48,14 @@
         </div>
         <div class="thumbnail">
             <label>Pick Up Date:</label>
-            <input type="text" class="form-control" placeholder="input date in format dd.mm.yyyy"
+            <input type="date" class="form-control"
                    pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" th:field="*{pickUpDate}">
             <td th:if="${#fields.hasErrors('pickUpDate')}" th:errors="*{pickUpDate}"></td>
 
         </div>
         <div class="thumbnail">
             <label>Drop Off Date:</label>
-            <input type="text" class="form-control" placeholder="input date in format dd.mm.yyyy"
+            <input type="date" class="form-control"
                    pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" th:field="*{dropOffDate}">
             <td th:if="${#fields.hasErrors('dropOffDate')}" th:errors="*{dropOffDate}"></td>
 

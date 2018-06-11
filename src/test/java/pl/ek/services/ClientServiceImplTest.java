@@ -51,6 +51,6 @@ public class ClientServiceImplTest {
     @Test
     public void findBySurname() {
         when(clientRepository.findBySurname("kot")).thenReturn(dataToTestRepository.clientList());
-        assertEquals(3, clientService.findBySurname("kot").size());
+        assertEquals(2, clientService.findBySurname("kot").size());
     }
 }

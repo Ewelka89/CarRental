@@ -22,18 +22,9 @@ public class RentalServiceImplTest {
 
     DataToTestRepository dataToTestRepository = new DataToTestRepository();
 
-//    @Before
-//    public void init(){
-//        when(rentalRepository.findAll()).thenReturn(dataToTestRepository.rentalList());
-//    }
 
     @Test
     public void save() {
-//        Rental rent= new Rental.RentalBuilder()
-//                .dropOffLocation("wawa")
-//                .build();
-//        rentalService.save(rent);
-//        assertEquals(2, rentalService.findAll().size());
     }
 
     @Test

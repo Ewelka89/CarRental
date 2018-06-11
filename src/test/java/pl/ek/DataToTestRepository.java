@@ -20,8 +20,8 @@ public class DataToTestRepository {
                 .build();
         carList.add(car);
         Car car2= new Car.CarBuilder()
-                .brand("opel")
-                .model("astra")
+                .brand("ford")
+                .model("mondeo")
                 .year("2001")
                 .build();
         carList.add(car2);
@@ -45,13 +45,6 @@ public class DataToTestRepository {
                 .birthdate("10.12.1934")
                 .build();
         clientList.add(client2);
-        Client client3= new Client.ClientBuilder()
-                .id(3L)
-                .name("jan")
-                .surname("mak")
-                .birthdate("10.01.1934")
-                .build();
-        clientList.add(client3);
 
         return clientList;
     }

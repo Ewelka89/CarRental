@@ -7,6 +7,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Car {
@@ -244,4 +245,29 @@ public class Car {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return airCondition == car.airCondition &&
+                navi == car.navi &&
+                bluetooth == car.bluetooth &&
+                carAudio == car.carAudio &&
+                fourWheelDrive == car.fourWheelDrive &&
+                Objects.equals(id, car.id) &&
+                Objects.equals(brand, car.brand) &&
+                Objects.equals(model, car.model) &&
+                Objects.equals(year, car.year) &&
+                bodyType == car.bodyType &&
+                fuelType == car.fuelType &&
+                gearbox == car.gearbox &&
+                Objects.equals(rentals, car.rentals);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, brand, model, year, bodyType, fuelType, airCondition, navi, bluetooth, carAudio, fourWheelDrive, gearbox, rentals);
+    }
 }

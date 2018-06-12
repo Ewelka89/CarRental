@@ -1,5 +1,6 @@
 package pl.ek.services;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -14,14 +15,18 @@ import static org.mockito.Mockito.when;
 @RunWith(value = MockitoJUnitRunner.class)
 public class ClientServiceImplTest {
 
+    private DataToTestRepository dataToTestRepository;
+
     @InjectMocks
     private ClientServiceImpl clientService;
 
     @Mock
     private ClientRepository clientRepository;
 
-    //before
-    DataToTestRepository dataToTestRepository = new DataToTestRepository();
+    @Before
+    public void init() {
+        dataToTestRepository = new DataToTestRepository();
+    }
 
     @Test
     public void save() {
@@ -31,7 +36,7 @@ public class ClientServiceImplTest {
     @Test
     public void findAll() {
         when(clientRepository.findAll()).thenReturn(dataToTestRepository.clientList());
-        assertEquals(3, clientService.findAll().size());
+        assertEquals(2, clientService.findAll().size());
     }
 
     @Test

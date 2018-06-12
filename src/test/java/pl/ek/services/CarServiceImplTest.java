@@ -1,5 +1,6 @@
 package pl.ek.services;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -14,13 +15,18 @@ import static org.mockito.Mockito.when;
 @RunWith(value = MockitoJUnitRunner.class)
 public class CarServiceImplTest {
 
+    private DataToTestRepository dataToTestRepository;
+
     @InjectMocks
     private CarServiceImpl carService;
 
     @Mock
     private CarRepository carRepository;
 
-    DataToTestRepository dataToTestRepository= new DataToTestRepository();
+    @Before
+    public void init() {
+        dataToTestRepository = new DataToTestRepository();
+    }
 
     @Test
     public void save() {

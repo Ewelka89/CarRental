@@ -31,11 +31,12 @@ public class CarControllerTest {
 
     private MockMvc mockMvc;
 
-    DataToTestRepository dataToTestRepository= new DataToTestRepository();
+    private DataToTestRepository dataToTestRepository;
 
     @Before
     public void init() {
         mockMvc = MockMvcBuilders.standaloneSetup(carController).build();
+        dataToTestRepository= new DataToTestRepository();
     }
 
     @Test

@@ -8,4 +8,5 @@ import java.util.List;
 public interface RentalRepository extends JpaRepository<Rental, Long> {
     @Override
     List<Rental> findAll();
+    Rental save(Rental rental);
 }

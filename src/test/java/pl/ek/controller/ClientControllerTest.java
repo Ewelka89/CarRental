@@ -31,11 +31,12 @@ public class ClientControllerTest {
 
     private MockMvc mockMvc;
 
-    DataToTestRepository dataToTestRepository= new DataToTestRepository();
+    private DataToTestRepository dataToTestRepository;
 
     @Before
     public void init() {
         mockMvc = MockMvcBuilders.standaloneSetup(clientController).build();
+        dataToTestRepository= new DataToTestRepository();
     }
 
     @Test

@@ -6,10 +6,10 @@
 <body>
 <div th:include="navi :: menu"></div>
 <h2>New rent:</h2>
-<!--<datalist id="cars">-->
-    <!--<option th:each="car : ${cars}" th:value="${car.id}"-->
-            <!--th:label="${car.model}"></option>-->
-<!--</datalist>-->
+<datalist id="cars">
+    <option th:each="car : ${cars}" th:value="${car.id}"
+            th:label="${car.model}"></option>
+</datalist>
 <datalist id="clients">
     <option th:each="cl : ${clients}" th:value="${cl.id}"
             th:label="${cl.surname}"></option>
@@ -25,8 +25,9 @@
     <div class="col-xs-3">
 
         <div class="thumbnail">
-            <label>Car:</label>
-            <input list="cars" class="form-control" name="car" disabled="disabled" th:field="*{car}">
+            <label for="cars">Car:</label>
+            <input list="cars" class="form-control" name="car" readonly th:field="*{car}">
+                   <td th:text="*{car.brand + ' ' + car.model}"></td>
         </div>
 
         <div class="thumbnail">

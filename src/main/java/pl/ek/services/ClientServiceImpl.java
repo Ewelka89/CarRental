@@ -14,10 +14,10 @@ public class ClientServiceImpl implements ClientService {
     private ClientRepository clientRepository;
 
     @Override
-    public void save(Client client) {
+    public Client save(Client client) {
         client.getClientAddress().setClient(client);
         client.getClientContact().setClient(client);
-        clientRepository.save(client);
+        return clientRepository.save(client);
     }
 
     @Override

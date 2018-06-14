@@ -27,8 +27,7 @@
         </div>
         <div class="thumbnail">
             <label>Date of birth:</label>
-            <input type="date" class="form-control"
-                   pattern="" th:field="*{birthdate}">
+            <input type="date" class="form-control" th:field="*{birthdate}">
             <td th:if="${#fields.hasErrors('birthdate')}" th:errors="*{birthdate}"></td>
         </div>
         <div class="thumbnail">

@@ -18,7 +18,6 @@ public class Car {
     @Size(min = 2, message = "minimum two characters")
     private String brand;
     @NotEmpty
-    @Size(min = 2, message = "minimum two characters")
     private String model;
     @NotEmpty
     @Size(min = 4, max = 4, message = "only 4 digits")
@@ -47,6 +46,7 @@ public class Car {
     }
 
     private Car(CarBuilder carBuilder) {
+        this.id=carBuilder.id;
         this.brand = carBuilder.brand;
         this.model = carBuilder.model;
         this.year = carBuilder.year;
@@ -166,7 +166,7 @@ public class Car {
     }
 
     public static class CarBuilder {
-
+        private Long id;
         private String brand;
         private String model;
         private String year;
@@ -179,6 +179,11 @@ public class Car {
         private boolean fourWheelDrive;
         private Gearbox gearbox;
         private List<Rental> rentals;
+
+        public CarBuilder id(Long id){
+            this.id=id;
+            return this;
+        }
 
         public CarBuilder brand(String brand) {
             this.brand = brand;

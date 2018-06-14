@@ -17,7 +17,6 @@ import static org.mockito.Mockito.when;
 public class RentalServiceImplTest {
 
     private DataToTestRepository dataToTestRepository;
-    private Rental rental;
 
     @InjectMocks
     private RentalServiceImpl rentalService;
@@ -28,11 +27,11 @@ public class RentalServiceImplTest {
     @Before
     public void init() {
         dataToTestRepository = new DataToTestRepository();
-        rental = dataToTestRepository.rentalList().get(0);
     }
 
     @Test
     public void save() {
+        Rental rental = dataToTestRepository.rentalList().get(0);
         when(rentalRepository.save(rental)).thenReturn(rental);
         assertEquals(rental, rentalService.save(rental));
     }

@@ -7,6 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import pl.ek.DataToTestRepository;
+import pl.ek.domain.Car;
 import pl.ek.repositories.CarRepository;
 
 import static org.junit.Assert.assertEquals;
@@ -16,6 +17,7 @@ import static org.mockito.Mockito.when;
 public class CarServiceImplTest {
 
     private DataToTestRepository dataToTestRepository;
+    private Car car;
 
     @InjectMocks
     private CarServiceImpl carService;
@@ -26,11 +28,13 @@ public class CarServiceImplTest {
     @Before
     public void init() {
         dataToTestRepository = new DataToTestRepository();
+        car = dataToTestRepository.carList().get(0);
     }
 
     @Test
     public void save() {
-
+        when(carRepository.save(car)).thenReturn(car);
+        assertEquals(car, carService.save(car));
     }
 
     @Test
@@ -41,12 +45,13 @@ public class CarServiceImplTest {
 
     @Test
     public void findOne() {
-        when(carRepository.findOne(1L)).thenReturn(dataToTestRepository.carList().get(0));
-        assertEquals(dataToTestRepository.carList().get(0), carService.findOne(1L));
+        when(carRepository.findOne(1L)).thenReturn(car);
+        assertEquals(car, carService.findOne(1L));
     }
 
     @Test
     public void delete() {
+
     }
 
     @Test

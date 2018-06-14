@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CarService {
 
-    void save (Car car);
+    Car save (Car car);
     List<Car> findAll();
     Car findOne (Long id);
     void delete (Long id);
